@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampusLunchAi - 프로젝트 포트폴리오</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chosen Palette: Calm Harmony (Gray-50, White, Indigo-600) -->
-    <!-- Application Structure Plan: A single-page, top-down narrative SPA. It follows the report's structure (Hero, Tech Stack, Features, Troubleshooting) but enhances it. The 'Core Features' section is the app's centerpiece, featuring an interactive JavaScript-powered CRUD demo that simulates the chatbot's database commands (!추가, !수정, !삭제) on a live data table. This is more effective than static text for demonstrating the project's capability. An accordion is used for 'Troubleshooting' to improve readability. This structure directly supports the goal of making the *project report* itself explorable and demonstrating its technical depth. -->
-    <!-- Visualization & Content Choices:
-        - Report Info: CRUD commands (!추가, !수정, !삭제). Goal: Demonstrate. Viz/Method: Interactive HTML table + JS Modals + JS data array. Interaction: User clicks demo buttons, fills modal, JS updates table. Justification: This is the 'wow' factor, proving the concept live instead of just describing it. Library: Vanilla JS.
-        - Report Info: Tech Stack. Goal: Inform. Viz/Method: Interactive HTML cards. Interaction: Hover. Justification: More engaging than a bullet list. Library: Tailwind CSS.
-        - Report Info: Troubleshooting section. Goal: Organize/Inform. Viz/Method: HTML/JS Accordion. Interaction: Click to expand/collapse. Justification: Prevents a long wall of text, improving UX. Library: Vanilla JS.
-        - Report Info: Data Cleaning. Goal: Educate. Viz/Method: Before/After cards + HTML `<code>` block. Interaction: Static. Justification: Clearly shows the technical solution. Library: HTML/CSS.
-        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. No Chart.js needed as the interactive table serves as the primary data visualization. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', 'Pretendard', sans-serif;
@@ -63,11 +54,13 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-3xl font-bold text-indigo-600 tracking-tighter">CampusLunchAi</h1>
             <div class="hidden md:flex space-x-6">
-                <a href="#about-me" class="text-gray-600 hover:text-indigo-600">개발자 소개</a>
                 <a href="#overview" class="text-gray-600 hover:text-indigo-600">프로젝트 개요</a>
+                <a href="#about-me" class="text-gray-600 hover:text-indigo-600">개발자 소개</a>
                 <a href="#tech" class="text-gray-600 hover:text-indigo-600">적용 기술</a>
                 <a href="#features" class="text-gray-600 hover:text-indigo-600">핵심 기능</a>
                 <a href="#troubleshooting" class="text-gray-600 hover:text-indigo-600">문제 해결</a>
+                <a href="#demo" class="text-gray-600 hover:text-indigo-600">시연 영상</a>
+                <a href="#evaluation" class="text-gray-600 hover:text-indigo-600 font-semibold text-indigo-500">사용자 평가</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -75,31 +68,17 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="#about-me" class="block text-gray-600 hover:text-indigo-600">개발자 소개</a>
             <a href="#overview" class="block text-gray-600 hover:text-indigo-600">프로젝트 개요</a>
+            <a href="#about-me" class="block text-gray-600 hover:text-indigo-600">개발자 소개</a>
             <a href="#tech" class="block text-gray-600 hover:text-indigo-600">적용 기술</a>
             <a href="#features" class="block text-gray-600 hover:text-indigo-600">핵심 기능</a>
             <a href="#troubleshooting" class="block text-gray-600 hover:text-indigo-600">문제 해결</a>
+            <a href="#demo" class="block text-gray-600 hover:text-indigo-600">시연 영상</a>
+            <a href="#evaluation" class="block text-gray-600 hover:text-indigo-600 font-semibold text-indigo-500">사용자 평가</a>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-12">
-
-        <!-- 0. About Me (NEW SECTION) -->
-        <section id="about-me" class="py-16">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4">문석민</h2>
-                <p class="text-2xl text-indigo-600 font-semibold mb-8">"기능 하나하나 섬세하게 구현하는 개발자"</p>
-                <p class="text-lg text-gray-700 leading-relaxed text-left">
-                    저는 프로젝트를 진행 할 때에 구현해야 하는 기능이나 생각난 아이디어가 있다면 빈틈 없이 개발을 추구합니다.
-                    이로 인해 디테일한 결과물이 나올 수 있다고 생각합니다.
-                </p>
-                <p class="text-lg text-gray-700 leading-relaxed text-left mt-4">
-                    이 프로젝트를 통해 여러 상황에 대응하는 프롬프트를 평상시에 오전수업이 끝나고 점심을 고민하는 대학생들에게 시간을 절약하고 원하는 메뉴를 빠르게 선택 할 수 있게 되었으면 좋겠습니다.
-                </p>
-            </div>
-            <hr class="mt-16 border-gray-200">
-        </section>
 
         <!-- 1. Hero / Overview -->
         <section id="overview" class="py-16">
@@ -107,9 +86,14 @@
                 <div>
                     <span class="text-indigo-600 font-semibold">실시간 CRUD가 가능한 점심 메뉴 추천 챗봇</span>
                     <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mt-2 mb-6">Excel DB를 실시간 제어하는<br>대화형 Flask 챗봇</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
                         단순히 정해진 답변만 반복하는 챗봇이 아닌, 사용자의 실제 데이터를 기반으로 지능적인 추천을 제공하는 시스템입니다. 사용자는 챗봇과 대화하며 메뉴를 추천받고, <code>!추가</code>, <code>!수정</code>, <code>!삭제</code> 명령어로 챗봇이 참고하는 Excel DB를 실시간으로 업데이트할 수 있습니다. 챗봇은 이 최신 데이터를 즉시 다음 추천에 반영합니다.
                     </p>
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/Tignileef/MSM" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                        GitHub Repository
+                    </a>
                 </div>
                 <!-- Chatbot UI Mockup -->
                 <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
@@ -148,6 +132,23 @@
                     </div>
                 </div>
             </div>
+            <hr class="mt-16 border-gray-200">
+        </section>
+
+        <!-- 0. About Me -->
+        <section id="about-me" class="py-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter mb-4">문석민</h2>
+                <p class="text-2xl text-indigo-600 font-semibold mb-8">"기능 하나하나 섬세하게 구현하는 개발자"</p>
+                <p class="text-lg text-gray-700 leading-relaxed text-left">
+                    저는 프로젝트를 진행 할 때에 구현해야 하는 기능이나 생각난 아이디어가 있다면 빈틈 없이 개발을 추구합니다.
+                    이로 인해 디테일한 결과물이 나올 수 있다고 생각합니다.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed text-left mt-4">
+                    이 프로젝트를 통해 여러 상황에 대응하는 프롬프트를 평상시에 오전수업이 끝나고 점심을 고민하는 대학생들에게 시간을 절약하고 원하는 메뉴를 빠르게 선택 할 수 있게 되었으면 좋겠습니다.
+                </p>
+            </div>
+            <hr class="mt-16 border-gray-200">
         </section>
 
         <!-- 2. Tech Stack -->
@@ -358,12 +359,46 @@
                 
             </div>
         </section>
+
+        <!-- 5. Demo Video -->
+        <section id="demo" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">프로젝트 시연 영상</h2>
+            <div class="max-w-5xl mx-auto bg-white p-4 rounded-2xl shadow-xl border border-gray-100">
+                <div class="relative w-full pb-[56.25%] bg-gray-900 rounded-lg overflow-hidden group">
+                    <video class="absolute top-0 left-0 w-full h-full" controls>
+                        <source src="CampusLunchAi.mp4" type="video/mp4">
+                        브라우저가 비디오 태그를 지원하지 않습니다.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. User Evaluation (NEW SECTION) -->
+        <section id="evaluation" class="py-16 bg-indigo-50">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h2 class="text-3xl font-bold mb-6">사용자 평가 및 피드백</h2>
+                <p class="text-lg text-gray-700 mb-8">
+                    더 나은 서비스를 만들기 위해 사용자 여러분의 소중한 의견을 듣고 있습니다.<br>
+                    잠시 시간을 내어 설문에 참여해 주시면 프로젝트 개선에 큰 도움이 됩니다.
+                </p>
+                <!-- Google Forms Button -->
+                <a href="https://forms.gle/3UnLhMrkuEiAitzv8" target="_blank" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    📝 설문조사 참여하기
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 mt-16">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p>CampusLunchAi - Interactive Project Portfolio</p>
+            <p class="mb-2">CampusLunchAi - Interactive Project Portfolio</p>
+            <!-- Footer GitHub Link Added -->
+            <a href="https://github.com/Tignileef/MSM" target="_blank" class="text-gray-400 hover:text-white transition-colors underline inline-flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                View on GitHub
+            </a>
         </div>
     </footer>
     
